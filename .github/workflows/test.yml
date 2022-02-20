@@ -21,4 +21,7 @@ jobs:
       - name: commit messages
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-        run: echo "$COMMIT_MESSAGES"
+          SKIP_DEPLOY: ${{ contains(join(COMMIT_MESSAGES), "#skip") }}
+        run:
+          echo "$COMMIT_MESSAGES"
+          echo "$SKIP_DEPLOY"
