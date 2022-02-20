@@ -36,3 +36,4 @@ jobs:
           healthcheck: "https://evening-dusk-93237.herokuapp.com/health"
           checkstring: "ok"
           delay: 5
+          rollbackonhealthcheckfailed: true
