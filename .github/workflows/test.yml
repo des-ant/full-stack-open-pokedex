@@ -25,4 +25,5 @@ jobs:
           SKIP_DEPLOY: ${{ contains(env.COMMIT_STRING, '#skip') }}
         run:
           echo "$COMMIT_MESSAGES"
+          echo "$COMMIT_STRING"
           echo "$SKIP_DEPLOY"
