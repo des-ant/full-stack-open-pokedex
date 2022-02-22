@@ -22,7 +22,7 @@ jobs:
       #     COMMITS: ${{ toJson(github.event.commits) }}
       #   run: echo "$COMMITS"
       - name: commit messages
-        if: ${{ !SKIP_DEPLOY }}
+        if: ${{ !env.SKIP_DEPLOY }}
         # env:
         #   COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         #   COMMIT_STRING: ${{ join(github.event.commits.*.message) }}
