@@ -5,11 +5,6 @@ on:
     branches:
       - master
 
-env:
-  COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-  COMMIT_STRING: ${{ join(env.COMMIT_MESSAGES) }}
-  SKIP_DEPLOY: ${{ contains(env.COMMIT_STRING, '#skip') }}
-
 jobs:
   a_test_job:
     runs-on: ubuntu-18.04
@@ -24,7 +19,12 @@ jobs:
           COMMITS: ${{ toJson(github.event.commits) }}
         run: echo "$COMMITS"
       - name: commit messages
+        env:
+          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run:
-          echo "$env.COMMIT_MESSAGES"
-          echo "$env.COMMIT_STRING"
-          echo "$env.SKIP_DEPLOY"
+          echo "COMMIT_STRING=${{ join(${COMMIT_MESSAGES}) }}" >> $GITHUB_ENV
+          echo "SKIP_DEPLOY=${{ contains(${COMMIT_STRING}, '#skip') }}" >>
+          $GITHUB_ENV
+          echo "$COMMIT_MESSAGES"
+          echo "$COMMIT_STRING"
+          echo "$SKIP_DEPLOY"
