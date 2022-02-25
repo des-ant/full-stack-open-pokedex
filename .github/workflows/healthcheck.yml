@@ -7,6 +7,9 @@ on:
   pull_request:
     branches: [master]
     types: [opened, synchronize]
+  schedule:
+    # At the end of every day
+    - cron: '0 0 * * *'
 
 jobs:
   periodic_health_check:
