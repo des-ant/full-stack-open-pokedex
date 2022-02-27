@@ -47,7 +47,7 @@ jobs:
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "evening-dusk-93237"
-          heroku_email: "ayip2151@uni.sydney.edu.au"
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
           healthcheck: "https://evening-dusk-93237.herokuapp.com/health"
           checkstring: "ok"
           delay: 5
